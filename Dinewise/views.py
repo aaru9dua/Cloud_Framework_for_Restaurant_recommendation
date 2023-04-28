@@ -82,7 +82,7 @@ def distance(lat1, lng1, lat2, lng2):
 
 
 def home(request):
-    return render(request, 'Dinewise/recommendation.html')
+    return render(request, 'Dinewise/recommendations.html')
 
 def location(request):
     address = request.GET['address']
@@ -90,6 +90,7 @@ def location(request):
     food_types = request.GET.getlist('food-type')
     choice = '|'.join(food_types)
     print("choice")
+    print("--------------------")
 
 
 

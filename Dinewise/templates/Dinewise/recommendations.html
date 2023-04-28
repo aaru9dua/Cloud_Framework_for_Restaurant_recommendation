@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dinewise Restaurant Recommendation</title>
+  <style>
+    
+ 
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 20px;
+      background-image: url('https://img.freepik.com/free-photo/frying-pan-empty-with-various-spices-black-table_1220-561.jpg?w=2000&t=st=1682633951~exp=1682634551~hmac=a2400b01b89bb12e0da57fd97f7b8cf1979e693b682be601737f26e3d04e7d62');
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .form-group .image-button {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .form-group .image-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Restaurant Order Form</h1>
+    
+    <form action="location">
+      <div class="form-group">
+        <label for="address">Enter Address:</label>
+        <input type="text" class="form-control" id="address" name="address">
+      </div>
+
+      
+      <div class="form-group">
+        <label>Select Food Type:</label>
+        <style>
+          /* Add a hover effect to the image button */
+          .my-image-button:hover {
+              opacity: 0.8;
+              cursor: pointer;
+          }
+      </style>
+
+<div class="image-button">
+  <input type="radio" id="Nightlife" name="food-type" value="italian" style="display: none;">
+  <div class="image-container">
+    <label for="italian">
+      <img src="{% static 'images/nightlife.png' %}" alt="Nightlife" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Nightlife</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Pizza" name="food-type" value="Pizza" style="display: none;">
+  <div class="image-container">
+    <label for="Pizza">
+      <img src="{% static 'images/pizza.png' %}" alt="Pizza" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Pizza</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Chinese" name="food-type" value="Chinese" style="display: none;">
+  <div class="image-container">
+    <label for="Chinese">
+      <img src="{% static 'images/bibimbap.png' %}" alt="Chinese" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Chinese</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Burgers" name="food-type" value="Burgers" style="display: none;">
+  <div class="image-container">
+    <label for="Burgers">
+      <img src="{% static 'images/burger.png' %}" alt="Burgers" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Burgers</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Chicken Wings" name="food-type" value="Chicken Wings" style="display: none;">
+  <div class="image-container">
+    <label for="Chicken Wings">
+      <img src="{% static 'images/chicken.png' %}" alt="Chicken Wings" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Chicken Wings</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="italian" name="food-type" value="Coffee & Tea" style="display: none;">
+  <div class="image-container">
+    <label for="Coffee & Tea">
+      <img src="{% static 'images/coffee-cup.png' %}" alt="Coffee & Tea" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Coffee & Tea</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Desserts" name="food-type" value="Desserts" style="display: none;">
+  <div class="image-container">
+    <label for="Desserts">
+      <img src="{% static 'images/deserts.jpg' %}" alt="Desserts" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Desserts</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Indian" name="food-type" value="Indian" style="display: none;">
+  <div class="image-container">
+    <label for="Indian">
+      <img src="{% static 'images/masala-dosa.png' %}" alt="Indian" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Indian</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Japanese" name="food-type" value="Japanese" style="display: none;">
+  <div class="image-container">
+    <label for="Japanese">
+      <img src="{% static 'images/ramen.png' %}" alt="Japanese" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Japanese</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Steakhouses" name="food-type" value="Steakhouses" style="display: none;">
+  <div class="image-container">
+    <label for="Steakhouses">
+      <img src="{% static 'images/steakhouse.jpg' %}" alt="Steakhouses" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Steakhouses</span>
+  </div>
+</div>
+<div class="image-button">
+  <input type="radio" id="Thai" name="food-type" value="Thai" style="display: none;">
+  <div class="image-container">
+    <label for="Thai">
+      <img src="{% static 'images/thaifood.jpg' %}" alt="Thai" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Thai</span>
+  </div>
+</div>
+
+<div class="image-button">
+  <input type="radio" id="italian" name="food-type" value="Sushi Bars" style="display: none;">
+  <div class="image-container">
+    <label for="Sushi Bars">
+      <img src="{% static 'images/sushi.jpg' %}" alt="Sushi Bars" style="margin-top: 20px;" width="40" height="40" class="my-image-button">
+    </label>
+    <span class="cuisine-name">Sushi Bars</span>
+  </div>
+</div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
