@@ -26,7 +26,7 @@ def recommend(restuarant,df1,similarity):
     distances = sorted(list(enumerate(similarity[index])),reverse=True,key = lambda x: x[1])
     top_res=[]
     for i in distances[1:10]:
-        top_res.append(df1.loc[i[0]][['name','stars', 'review_count', 'categories','address','city','state']])
+        top_res.append(df1.loc[i[0]][['name','stars', 'review_count', 'categories','address','city','state','latitude','longitude']])
     return top_res
 
 
@@ -66,7 +66,7 @@ def search_restaurants(lat, lng, df):
     df = df.sort_values(by=['distance','stars', 'review_count'], ascending=[True,False, False]).iloc[:10000]
     
     # Return the list of restaurants, along with their star ratings, review counts, and distance from the user's location
-    return df[['name', 'stars', 'review_count', 'categories', 'text','address','city','state']]
+    return df[['name', 'stars', 'review_count', 'categories', 'text','address','city','state','latitude','longitude']]
 
 def distance(lat1, lng1, lat2, lng2):
     # Calculate the distance between two locations using the Haversine formula
@@ -120,11 +120,11 @@ def location(request):
     print(res_name)
     print("--------------------------")
     top_res=recommend(res_name['name'],nearest_restaurants,similarity)
-    #print(top_res)
+    print(top_res)
     # convert the DataFrame to a list of dictionaries
     #data = nearest_restaurants.to_dict("records")    
 
     # pass the data to the template using the context dictionary
-    context = {"top_res": top_res}
+    context = {"top_res": top_res, "latitude": latitude, "longitude": longitude}
     # Pass the nearest_restaurants data to a template for rendering
     return render(request, 'Dinewise/results.html',  context)

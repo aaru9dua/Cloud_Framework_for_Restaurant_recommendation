@@ -58,17 +58,28 @@
             </tr>
         </thead>
         <tbody>
-            <div id="map" style="width:100%;height:50 px;"></div> 
+            <div id="map" style="width:100%; height:100 px;"></div>
+
             <script>
-                var map = L.map('map').setView([39.767593, -86.1546889], 13);
+                var lat ="{{ latitude }}"
+                var lon="{{ longitude }}"
+                var map = L.map('map').setView([lat,lon],13); // Set the initial map view with the calculated latitude and longitude
+
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
-                L.marker([39.767593, -86.1546889]).addTo(map)
-                    .openPopup();
+
+                // Rest of the code for setting markers on the map
             </script>
-            
+
+{% for restaurant in top_res %}
+<script>
+var marker = L.marker(["{{ restaurant.latitude }}", "{{ restaurant.longitude }}"]).addTo(map);
+marker.bindPopup("<b>{{ restaurant.name }}</b><br>{{ restaurant.address }}, {{ restaurant.city }}, {{ restaurant.state }}");
+</script>
+{% endfor %}
+
             {% for restaurant in top_res %}
             <tr>
                 <td>{{ restaurant.name }}</td>
